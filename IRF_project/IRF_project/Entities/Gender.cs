@@ -9,7 +9,7 @@ namespace IRF_project.Entities
 
         public enum Gender
         {
-            Male = 1,
-            Female = 2
+            M = 1,
+            F = 2
         }
 }
