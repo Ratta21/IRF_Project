@@ -44,6 +44,7 @@
             this.Import.TabIndex = 0;
             this.Import.Text = "Import";
             this.Import.UseVisualStyleBackColor = true;
+            this.Import.Click += new System.EventHandler(this.Import_Click);
             // 
             // Weight
             // 
