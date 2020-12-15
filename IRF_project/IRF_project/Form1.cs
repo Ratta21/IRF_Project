@@ -15,6 +15,7 @@ namespace IRF_project
     public partial class Form1 : Form
     {
         List<Customers> Customers = new List<Customers>();
+        string[] headers = new string[6];
 
         public Form1()
         {
@@ -32,27 +33,47 @@ namespace IRF_project
                 while (!sr.EndOfStream)
                 {
                     var line = sr.ReadLine().Split(';');
-                    Customers.Add(new Customers()
+                    if (line[0] == "Name")
                     {
-                        Name = (line[0]),
-                        Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
-                        Email = (line[2]),
-                        Weight = int.Parse(line[3]),
-                        Height = float.Parse(line[4]),
-                        Lead_Source = (line[5]),
+                        headers[0] = line[0];
+                        headers[1] = line[1];
+                        headers[2] = line[2];
+                        headers[3] = line[3];
+                        headers[4] = line[4];
+                        headers[5] = line[5];
+                    }
+                    else
+                    {
+                        Customers.Add(new Customers()
+                        {
+                            Name = (line[0]),
+                            Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
+                            Email = (line[2]),
+                            Weight = int.Parse(line[3]),
+                            Height = float.Parse(line[4]),
+                            Lead_Source = (line[5]),
 
-                        //Ide még jönnének cuccok
-                    });
+                            //Ide még jönnének cuccok
+                        });
+                    }
                 }
+
+                return Customers;
+
+
             }
-
-            return Customers;
-
-
+      
         }
+
         private void Import_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = Customers;
+            dataGridView1.Columns[0].HeaderText = headers[0];
+            dataGridView1.Columns[1].HeaderText = headers[1];
+            dataGridView1.Columns[2].HeaderText = headers[2];
+            dataGridView1.Columns[3].HeaderText = headers[3];
+            dataGridView1.Columns[4].HeaderText = headers[4];
+            dataGridView1.Columns[5].HeaderText = headers[5];
         }
     }
 }

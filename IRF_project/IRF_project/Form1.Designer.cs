@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Import = new System.Windows.Forms.Button();
             this.Weight = new System.Windows.Forms.Button();
             this.Height = new System.Windows.Forms.Button();
             this.Generate_Excel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +107,7 @@
         private System.Windows.Forms.Button Height;
         private System.Windows.Forms.Button Generate_Excel;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
