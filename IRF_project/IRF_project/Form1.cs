@@ -24,11 +24,13 @@ namespace IRF_project
         Excel.Application xlApp;
         Excel.Workbook xlWB;
         Excel.Worksheet xlSheet;
+
+        int countdown = 60;
         public Form1()
         {
             InitializeComponent();
             customers = GetCustomers(@"C:\Temp\Customers.csv");
-
+            timer1.Start();
         }
 
 
@@ -130,7 +132,7 @@ namespace IRF_project
                 xlApp = null;
             }
         }
-        private void CreaateTable()
+        private void CreateTable()
         {
             string[] headers = new string[] {
                 "Name",
@@ -156,9 +158,39 @@ namespace IRF_project
                 values[counter, 5] = item.Lead_Source;
                 counter++;
             }
+            xlSheet.get_Range(
+             GetCell(2, 1),
+             GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
 
 
+        }
 
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            countdown = 60;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            countdown-=5;
+            if (countdown == 0) Application.Exit();
         }
     }
 
