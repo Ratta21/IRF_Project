@@ -103,5 +103,63 @@ namespace IRF_project
             dataGridView1.DataSource = customerMetrics;
 
         }
+
+        private void Generate_Excel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                xlApp = new Excel.Application();
+
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
+
+                xlSheet = xlWB.ActiveSheet;
+
+                CreateTable();
+
+                xlApp.Visible = true;
+                xlApp.UserControl = true;
+            }
+            catch (Exception ex)
+            {
+                string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+                MessageBox.Show(errMsg, "Error");
+
+                xlWB.Close(false, Type.Missing, Type.Missing);
+                xlApp.Quit();
+                xlWB = null;
+                xlApp = null;
+            }
+        }
+        private void CreaateTable()
+        {
+            string[] headers = new string[] {
+                "Name",
+                "Gender",
+                "E-mail",
+                "Weight",
+                "Heigth",
+                "Lead source"};
+
+            for (int i = 0; i < headers.Length; i++)
+            xlSheet.Cells[1, i+1] = headers[i];
+
+            object[,] values = new object[customerMetrics.Count, headers.Length];
+
+            int counter = 0;
+            foreach (var item in customerMetrics)
+            {
+                values[counter, 0] = item.Name;
+                values[counter, 1] = item.Gender;
+                values[counter, 2] = item.Email;
+                values[counter, 3] = item.Weight;
+                values[counter, 4] = item.Height;
+                values[counter, 5] = item.Lead_Source;
+                counter++;
+            }
+
+
+
+        }
     }
+
 }

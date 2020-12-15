@@ -65,6 +65,7 @@
             this.Generate_Excel.TabIndex = 3;
             this.Generate_Excel.Text = "Generate Excel";
             this.Generate_Excel.UseVisualStyleBackColor = true;
+            this.Generate_Excel.Click += new System.EventHandler(this.Generate_Excel_Click);
             // 
             // dataGridView1
             // 
