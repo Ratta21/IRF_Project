@@ -30,8 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Import = new System.Windows.Forms.Button();
-            this.Weight = new System.Windows.Forms.Button();
-            this.Height = new System.Windows.Forms.Button();
+            this.Calculate = new System.Windows.Forms.Button();
             this.Generate_Excel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -48,23 +47,14 @@
             this.Import.UseVisualStyleBackColor = true;
             this.Import.Click += new System.EventHandler(this.Import_Click);
             // 
-            // Weight
+            // Calculate
             // 
-            this.Weight.Location = new System.Drawing.Point(194, 13);
-            this.Weight.Name = "Weight";
-            this.Weight.Size = new System.Drawing.Size(103, 36);
-            this.Weight.TabIndex = 1;
-            this.Weight.Text = "Weight";
-            this.Weight.UseVisualStyleBackColor = true;
-            // 
-            // Height
-            // 
-            this.Height.Location = new System.Drawing.Point(391, 13);
-            this.Height.Name = "Height";
-            this.Height.Size = new System.Drawing.Size(103, 36);
-            this.Height.TabIndex = 2;
-            this.Height.Text = "Height";
-            this.Height.UseVisualStyleBackColor = true;
+            this.Calculate.Location = new System.Drawing.Point(311, 13);
+            this.Calculate.Name = "Calculate";
+            this.Calculate.Size = new System.Drawing.Size(103, 36);
+            this.Calculate.TabIndex = 2;
+            this.Calculate.Text = "Calculate";
+            this.Calculate.UseVisualStyleBackColor = true;
             // 
             // Generate_Excel
             // 
@@ -80,7 +70,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 69);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(692, 486);
+            this.dataGridView1.Size = new System.Drawing.Size(852, 486);
             this.dataGridView1.TabIndex = 4;
             // 
             // Form1
@@ -90,8 +80,7 @@
             this.ClientSize = new System.Drawing.Size(956, 567);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Generate_Excel);
-            this.Controls.Add(this.Height);
-            this.Controls.Add(this.Weight);
+            this.Controls.Add(this.Calculate);
             this.Controls.Add(this.Import);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -103,8 +92,7 @@
         #endregion
 
         private System.Windows.Forms.Button Import;
-        private System.Windows.Forms.Button Weight;
-        private System.Windows.Forms.Button Height;
+        private System.Windows.Forms.Button Calculate;
         private System.Windows.Forms.Button Generate_Excel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Timer timer1;

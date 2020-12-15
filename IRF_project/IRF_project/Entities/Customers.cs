@@ -13,7 +13,9 @@ namespace IRF_project.Entities
             public Gender Gender { get; set; }
             public String Email { get; set; }
             public int Weight { get; set; }
-            public float Height { get; set; }
+            public int HeightFeet { get; set; }
+            public int HeightInches { get; set; }
+
             public String Lead_Source { get; set; }
 
 

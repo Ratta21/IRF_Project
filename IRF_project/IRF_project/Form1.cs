@@ -15,7 +15,7 @@ namespace IRF_project
     public partial class Form1 : Form
     {
         List<Customers> Customers = new List<Customers>();
-        string[] headers = new string[6];
+        string[] headers = new string[7];
 
         public Form1()
         {
@@ -41,6 +41,7 @@ namespace IRF_project
                         headers[3] = line[3];
                         headers[4] = line[4];
                         headers[5] = line[5];
+                        headers[6] = line[6];
                     }
                     else
                     {
@@ -50,8 +51,9 @@ namespace IRF_project
                             Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
                             Email = (line[2]),
                             Weight = int.Parse(line[3]),
-                            Height = float.Parse(line[4]),
-                            Lead_Source = (line[5]),
+                            HeightFeet = int.Parse(line[4]),
+                            HeightInches = int.Parse(line[5]),
+                            Lead_Source = (line[6]),
 
                             //Ide még jönnének cuccok
                         });
@@ -74,6 +76,7 @@ namespace IRF_project
             dataGridView1.Columns[3].HeaderText = headers[3];
             dataGridView1.Columns[4].HeaderText = headers[4];
             dataGridView1.Columns[5].HeaderText = headers[5];
+            dataGridView1.Columns[6].HeaderText = headers[6];
         }
     }
 }
