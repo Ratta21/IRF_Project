@@ -48,13 +48,13 @@ namespace IRF_project
                     {
                         customers.Add(new Customer()
                         {
-                            Name = (line[0]),
-                            Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
-                            Email = (line[2]),
-                            Weight = int.Parse(line[3]),
-                            HeightFeet = int.Parse(line[4]),
-                            HeightInches = int.Parse(line[5]),
-                            Lead_Source = (line[6]),
+                            name = (line[0]),
+                            gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
+                            email = (line[2]),
+                            weight = int.Parse(line[3]),
+                            heightFeet = int.Parse(line[4]),
+                            heightInches = int.Parse(line[5]),
+                            leadSource = (line[6]),
 
                         });
                     }
@@ -92,12 +92,12 @@ namespace IRF_project
             {
                 customerMetrics.Add(new CustomerMetric()
                 {
-                    Name = item.Name,
-                    Gender = item.Gender,
-                    Email = item.Email,
-                    Weight = WeightChange(item.Weight),
-                    Height = HeightChange(item.HeightFeet, item.HeightInches),
-                    Lead_Source = item.Lead_Source
+                    name = item.name,
+                    gender = item.gender,
+                    email = item.email,
+                    weight = WeightChange(item.weight),
+                    height = HeightChange(item.heightFeet, item.heightInches),
+                    leadSource = item.leadSource
 
                 });
 
@@ -135,6 +135,8 @@ namespace IRF_project
         }
         private void CreateTable()
         {
+
+
             string[] headers = new string[] {
                 "Name",
                 "Gender",
@@ -151,12 +153,12 @@ namespace IRF_project
             int counter = 0;
             foreach (var item in customerMetrics)
             {
-                values[counter, 0] = item.Name;
-                values[counter, 1] = item.Gender;
-                values[counter, 2] = item.Email;
-                values[counter, 3] = item.Weight;
-                values[counter, 4] = item.Height;
-                values[counter, 5] = item.Lead_Source;
+                values[counter, 0] = item.name;
+                values[counter, 1] = item.gender;
+                values[counter, 2] = item.email;
+                values[counter, 3] = item.weight;
+                values[counter, 4] = item.height;
+                values[counter, 5] = item.leadSource;
                 counter++;
             }
             xlSheet.get_Range(
@@ -164,6 +166,11 @@ namespace IRF_project
              GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
 
 
+            Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            headerRange.Font.Bold = true;
+            headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            headerRange.Columns.AutoFit();
         }
 
         private string GetCell(int x, int y)

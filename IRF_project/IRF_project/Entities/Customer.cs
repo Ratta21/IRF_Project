@@ -9,14 +9,14 @@ namespace IRF_project.Entities
   public  class Customer
     {
     
-            public String Name { get; set; }
-            public Gender Gender { get; set; }
-            public String Email { get; set; }
-            public int Weight { get; set; }
-            public int HeightFeet { get; set; }
-            public int HeightInches { get; set; }
+            public String name { get; set; }
+            public Gender gender { get; set; }
+            public String email { get; set; }
+            public int weight { get; set; }
+            public int heightFeet { get; set; }
+            public int heightInches { get; set; }
 
-            public String Lead_Source { get; set; }
+            public String leadSource { get; set; }
 
 
 
