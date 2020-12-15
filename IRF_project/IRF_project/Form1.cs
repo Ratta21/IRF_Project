@@ -55,7 +55,6 @@ namespace IRF_project
                             HeightInches = int.Parse(line[5]),
                             Lead_Source = (line[6]),
 
-                            //Ide még jönnének cuccok
                         });
                     }
                 }
@@ -77,6 +76,12 @@ namespace IRF_project
             dataGridView1.Columns[4].HeaderText = headers[4];
             dataGridView1.Columns[5].HeaderText = headers[5];
             dataGridView1.Columns[6].HeaderText = headers[6];
+        }
+
+        private int WeightChange(int weight) 
+        {
+            return Convert.ToInt16(Math.Round(weight / 2.5, 0, MidpointRounding.AwayFromZero));
+
         }
     }
 }
