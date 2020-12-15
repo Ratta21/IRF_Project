@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
+
 
 namespace IRF_project
 {
@@ -16,8 +19,11 @@ namespace IRF_project
     {
         List<Customer> customers = new List<Customer>();
         List<CustomerMetric> customerMetrics = new List<CustomerMetric>();
-        string[] headers = new string[7];
 
+
+        Excel.Application xlApp;
+        Excel.Workbook xlWB;
+        Excel.Worksheet xlSheet;
         public Form1()
         {
             InitializeComponent();
@@ -34,17 +40,8 @@ namespace IRF_project
                 while (!sr.EndOfStream)
                 {
                     var line = sr.ReadLine().Split(';');
-                    if (line[0] == "Name")
-                    {
-                        headers[0] = line[0];
-                        headers[1] = line[1];
-                        headers[2] = line[2];
-                        headers[3] = line[3];
-                        headers[4] = line[4];
-                        headers[5] = line[5];
-                        headers[6] = line[6];
-                    }
-                    else
+                    if (line[0] != "Name")
+
                     {
                         customers.Add(new Customer()
                         {
@@ -70,13 +67,7 @@ namespace IRF_project
         private void Import_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = customers;
-            dataGridView1.Columns[0].HeaderText = headers[0];
-            dataGridView1.Columns[1].HeaderText = headers[1];
-            dataGridView1.Columns[2].HeaderText = headers[2];
-            dataGridView1.Columns[3].HeaderText = headers[3];
-            dataGridView1.Columns[4].HeaderText = headers[4];
-            dataGridView1.Columns[5].HeaderText = headers[5];
-            dataGridView1.Columns[6].HeaderText = headers[6];
+
         }
 
         private int WeightChange(int weight) 
@@ -92,6 +83,8 @@ namespace IRF_project
 
         private void Calculate_Click(object sender, EventArgs e)
         {
+
+            customerMetrics.Clear();
             foreach (var item in customers)
             {
                 customerMetrics.Add(new CustomerMetric()
@@ -102,8 +95,13 @@ namespace IRF_project
                     Weight = WeightChange(item.Weight),
                     Height = HeightChange(item.HeightFeet, item.HeightInches),
                     Lead_Source = item.Lead_Source
+
                 });
+
             }
+
+            dataGridView1.DataSource = customerMetrics;
+
         }
     }
 }

@@ -74,6 +74,10 @@
             this.dataGridView1.Size = new System.Drawing.Size(852, 486);
             this.dataGridView1.TabIndex = 4;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
