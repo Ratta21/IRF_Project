@@ -38,7 +38,7 @@ namespace IRF_project
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
                         Email = (line[2]),
                         Weight = int.Parse(line[3]),
-                        Height = int.Parse(line[4]),
+                        Height = float.Parse(line[4]),
                         Lead_Source = (line[5]),
 
                         //Ide még jönnének cuccok
@@ -52,6 +52,7 @@ namespace IRF_project
         }
         private void Import_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = Customers;
         }
     }
 }
