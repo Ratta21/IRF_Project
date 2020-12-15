@@ -55,6 +55,7 @@
             this.Calculate.TabIndex = 2;
             this.Calculate.Text = "Calculate";
             this.Calculate.UseVisualStyleBackColor = true;
+            this.Calculate.Click += new System.EventHandler(this.Calculate_Click);
             // 
             // Generate_Excel
             // 

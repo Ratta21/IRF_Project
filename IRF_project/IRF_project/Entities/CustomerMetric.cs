@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRF_project.Entities
 {
-  public  class Customers
+  public  class CustomerMetric
     {
     
             public String Name { get; set; }

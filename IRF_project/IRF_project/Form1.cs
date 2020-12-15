@@ -15,6 +15,7 @@ namespace IRF_project
     public partial class Form1 : Form
     {
         List<Customer> customers = new List<Customer>();
+        List<CustomerMetric> customerMetrics = new List<CustomerMetric>();
         string[] headers = new string[7];
 
         public Form1()
@@ -82,6 +83,27 @@ namespace IRF_project
         {
             return Convert.ToInt16(Math.Round(weight / 2.5, 0, MidpointRounding.AwayFromZero));
 
+        }
+
+        private int HeightChange(int heightFeet, int heightInches)
+        {
+            return Convert.ToInt16(Math.Round(heightFeet * 30.48 + heightInches*2.54, 0, MidpointRounding.AwayFromZero));
+        }
+
+        private void Calculate_Click(object sender, EventArgs e)
+        {
+            foreach (var item in customers)
+            {
+                customerMetrics.Add(new CustomerMetric()
+                {
+                    Name = item.Name,
+                    Gender = item.Gender,
+                    Email = item.Email,
+                    Weight = WeightChange(item.Weight),
+                    Height = HeightChange(item.HeightFeet, item.HeightInches),
+                    Lead_Source = item.Lead_Source
+                });
+            }
         }
     }
 }
