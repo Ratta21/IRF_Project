@@ -30,6 +30,7 @@ namespace IRF_project
         {
             InitializeComponent();
             customers = GetCustomers(@"C:\Temp\Customers.csv");
+            timer1.Interval = 5000;
             timer1.Start();
         }
 
