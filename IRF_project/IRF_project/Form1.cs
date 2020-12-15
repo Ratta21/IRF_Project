@@ -34,9 +34,14 @@ namespace IRF_project
                     var line = sr.ReadLine().Split(';');
                     Customers.Add(new Customers()
                     {
-                        BirthYear = int.Parse(line[0]),
+                        Name = (line[0]),
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
-                        NbrOfChildren = int.Parse(line[2])
+                        Email = (line[2]),
+                        Weight = int.Parse(line[3]),
+                        Height = int.Parse(line[4]),
+                        Lead_Source = (line[5]),
+
+                        //Ide még jönnének cuccok
                     });
                 }
             }
