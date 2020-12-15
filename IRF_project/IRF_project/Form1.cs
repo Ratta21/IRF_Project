@@ -14,18 +14,18 @@ namespace IRF_project
 {
     public partial class Form1 : Form
     {
-        List<Customers> Customers = new List<Customers>();
+        List<Customer> customers = new List<Customer>();
         string[] headers = new string[7];
 
         public Form1()
         {
             InitializeComponent();
-            Customers = GetCustomers(@"C:\Temp\Customers.csv");
+            customers = GetCustomers(@"C:\Temp\Customers.csv");
 
         }
 
 
-        public List<Customers> GetCustomers(string csvpath)
+        public List<Customer> GetCustomers(string csvpath)
         {
 
             using (StreamReader sr = new StreamReader(csvpath, Encoding.Default))
@@ -45,7 +45,7 @@ namespace IRF_project
                     }
                     else
                     {
-                        Customers.Add(new Customers()
+                        customers.Add(new Customer()
                         {
                             Name = (line[0]),
                             Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
@@ -60,7 +60,7 @@ namespace IRF_project
                     }
                 }
 
-                return Customers;
+                return customers;
 
 
             }
@@ -69,7 +69,7 @@ namespace IRF_project
 
         private void Import_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Customers;
+            dataGridView1.DataSource = customers;
             dataGridView1.Columns[0].HeaderText = headers[0];
             dataGridView1.Columns[1].HeaderText = headers[1];
             dataGridView1.Columns[2].HeaderText = headers[2];
